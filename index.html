@@ -15,26 +15,26 @@
             --danger: #f44336;
             --info: #0dcaf0;
         }
-        
+
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
         }
-        
+
         body {
             background-color: #f5f5f5;
             color: var(--dark);
             line-height: 1.6;
         }
-        
+
         .container {
             max-width: 800px;
             margin: 0 auto;
             padding: 20px;
         }
-        
+
         header {
             background-color: var(--primary);
             color: white;
@@ -43,7 +43,7 @@
             border-radius: 8px 8px 0 0;
             margin-bottom: 1.5rem;
         }
-        
+
         .card {
             background-color: white;
             border-radius: 8px;
@@ -51,35 +51,35 @@
             overflow: hidden;
             margin-bottom: 1.5rem;
         }
-        
+
         .card-header {
             background-color: var(--primary);
             color: white;
             padding: 1rem;
             font-weight: bold;
         }
-        
+
         .card-body {
             padding: 1.5rem;
         }
-        
+
         .form-group {
             margin-bottom: 1rem;
         }
-        
+
         label {
             display: block;
             margin-bottom: 0.5rem;
             font-weight: 500;
         }
-        
+
         .kannada {
             font-style: normal;
             color: var(--secondary);
             font-size: 0.75rem;
             opacity: 0.8;
         }
-        
+
         input, select {
             width: 100%;
             padding: 10px;
@@ -88,13 +88,13 @@
             font-size: 1rem;
             transition: border-color 0.3s;
         }
-        
+
         input:focus, select:focus {
             border-color: var(--primary);
             outline: none;
             box-shadow: 0 0 0 3px rgba(67, 97, 238, 0.3);
         }
-        
+
         button {
             background-color: var(--primary);
             color: white;
@@ -107,11 +107,11 @@
             width: 100%;
             margin-top: 1rem;
         }
-        
+
         button:hover {
             background-color: var(--primary-dark);
         }
-        
+
         .result-container {
             display: none;
             background-color: white;
@@ -119,7 +119,7 @@
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
             margin-top: 2rem;
         }
-        
+
         .result-header {
             background-color: var(--success);
             color: white;
@@ -127,21 +127,21 @@
             border-radius: 8px 8px 0 0;
             text-align: center;
         }
-        
+
         .result-body {
             padding: 1.5rem;
         }
-        
+
         .result-item {
             margin-bottom: 1.5rem;
             padding-bottom: 1rem;
             border-bottom: 1px solid #eee;
         }
-        
+
         .result-item:last-child {
             border-bottom: none;
         }
-        
+
         .result-label {
             font-weight: 600;
             margin-bottom: 0.5rem;
@@ -149,13 +149,13 @@
             font-size: 1.1rem;
             color: var(--primary-dark);
         }
-        
+
         .result-value {
             font-weight: 700;
             font-size: 1.2rem;
             margin-bottom: 0.5rem;
         }
-        
+
         .result-formula {
             background-color: #f5f5f5;
             padding: 0.8rem;
@@ -164,17 +164,17 @@
             font-size: 0.9rem;
             display: none; /* Hidden by default */
         }
-        
+
         .formula-title {
             font-weight: 600;
             margin-bottom: 0.5rem;
             color: var(--secondary);
         }
-        
+
         .formula-steps {
             margin-left: 1rem;
         }
-        
+
         .service-details {
             background-color: var(--light);
             padding: 1rem;
@@ -182,33 +182,33 @@
             margin-bottom: 1.5rem;
             border-left: 4px solid var(--info);
         }
-        
+
         .service-details p {
             margin-bottom: 0.5rem;
         }
-        
+
         @media (max-width: 768px) {
             .container {
                 padding: 10px;
             }
-            
+
             header {
                 padding: 0.8rem;
             }
-            
+
             .card-body {
                 padding: 1rem;
             }
-            
+
             input, select, button {
                 padding: 10px;
             }
-            
+
             .result-formula {
                 font-size: 0.85rem;
             }
         }
-        
+
         .info-icon {
             display: inline-block;
             width: 18px;
@@ -222,12 +222,12 @@
             font-size: 12px;
             cursor: help;
         }
-        
+
         .tooltip {
             position: relative;
             display: inline-block;
         }
-        
+
         .tooltip .tooltip-text {
             visibility: hidden;
             width: 200px;
@@ -246,12 +246,12 @@
             font-weight: normal;
             font-size: 0.8rem;
         }
-        
+
         .tooltip:hover .tooltip-text {
             visibility: visible;
             opacity: 1;
         }
-        
+
         .watermark {
             text-align: center;
             padding: 10px;
@@ -260,7 +260,7 @@
             font-size: 0.8rem;
             margin-top: 1rem;
         }
-        
+
         .info-note {
             background-color: #fff3cd;
             border-left: 4px solid #ffc107;
@@ -269,7 +269,7 @@
             font-size: 0.9rem;
             border-radius: 4px;
         }
-        
+
         .toggle-btn {
             background-color: #f1f1f1;
             color: #555;
@@ -283,11 +283,11 @@
             width: auto;
             display: inline-block;
         }
-        
+
         .toggle-btn:hover {
             background-color: #e0e0e0;
         }
-        
+
         .toggle-btn.active {
             background-color: var(--info);
             color: white;
@@ -299,7 +299,7 @@
         <header>
             <h1>Retirement Benefits Calculator</h1>
         </header>
-        
+
         <div class="card">
             <div class="card-header">Enter Your Details</div>
             <div class="card-body">
@@ -308,14 +308,14 @@
                         <label for="serviceStartDate">Service Start Date <span class="kannada">(ಸೇವೆಗೆ ಸೇರಿದ ದಿನಾಂಕ)</span> <span class="tooltip"><span class="info-icon">i</span><span class="tooltip-text">Enter date in DD/MM/YYYY format</span></span></label>
                         <input type="text" id="serviceStartDate" placeholder="DD/MM/YYYY" required>
                     </div>
-                    
+
                     <div class="form-group">
                         <label for="dateOfBirth">Date of Birth <span class="kannada">(ಜನ್ಮ ದಿನಾಂಕ)</span> <span class="tooltip"><span class="info-icon">i</span><span class="tooltip-text">Enter date in DD/MM/YYYY format</span></span></label>
                         <input type="text" id="dateOfBirth" placeholder="DD/MM/YYYY" required>
                     </div>
-                    
+
                     <div class="form-group">
-                        <label for="retirementAge">Retirement Age <span class="kannada">(ನಿವೃತ್ತಿ ವಯಸ್ಸು)</span> 
+                        <label for="retirementAge">Retirement Age <span class="kannada">(ನಿವೃತ್ತಿ ವಯಸ್ಸು)</span>
                             <span class="tooltip">
                                 <span class="info-icon">i</span>
                                 <span class="tooltip-text">Standard retirement age for government employees in India is 60 years</span>
@@ -323,12 +323,12 @@
                         </label>
                         <input type="number" id="retirementAge" value="60" min="50" max="65" required>
                     </div>
-                    
+
                     <div class="form-group">
-                        <label for="monthlySalary">Monthly Basic Salary <span class="kannada">(ತಿಂಗಳ ಮೂಲ ವೇತನ)</span></label>
+                        <label for="monthlySalary">Retirement Basic <span class="kannada">(ನಿವೃತ್ತಿ ಮೂಲ ವೇತನ)</span></label>
                         <input type="number" id="monthlySalary" required min="1000" placeholder="e.g. 58250">
                     </div>
-                    
+
                     <div class="form-group">
                         <label for="daPercentage">DA Percentage <span class="kannada">(ತುಟ್ಟಿ ಭತ್ಯೆ ಶೇಕಡಾ)</span>
                             <span class="tooltip">
@@ -338,7 +338,7 @@
                         </label>
                         <input type="number" id="daPercentage" value="0" min="0" max="200" step="0.01" required>
                     </div>
-                    
+
                     <div class="form-group">
                         <label for="accumulatedLeave">Accumulated Leave <span class="kannada">(ಸಂಗ್ರಹಿತ ರಜೆ)</span>
                             <span class="tooltip">
@@ -348,7 +348,7 @@
                         </label>
                         <input type="number" id="accumulatedLeave" value="300" required min="0" max="1000">
                     </div>
-                    
+
                     <div class="form-group">
                         <label for="commutationFactor">Commutation Factor <span class="kannada">(ಕಮ್ಯುಟೇಶನ್ ಮೌಲ್ಯ)</span>
                             <span class="tooltip">
@@ -358,36 +358,34 @@
                         </label>
                         <input type="number" id="commutationFactor" value="9.81" min="0" max="15" step="0.01" required>
                     </div>
-                    
+
                     <button type="submit">Calculate Benefits</button>
                 </form>
             </div>
         </div>
-        
+
         <div class="result-container" id="resultContainer">
             <div class="result-header">
                 <h2>Retirement Benefits</h2>
             </div>
-            
+
             <div class="result-body">
                 <div class="service-details" id="serviceDetails">
-                    <!-- Service details will be displayed here -->
-                </div>
-                
+                    </div>
+
                 <div class="result-item">
                     <span class="result-label">1. Retirement Pension (ನಿವೃತ್ತಿ ವೇತನ)</span>
                     <div class="result-value" id="retirementPension">-</div>
                     <button class="toggle-btn" onclick="toggleFormula('pensionFormula')">Show Formula</button>
                     <div class="result-formula" id="pensionFormula"></div>
                 </div>
-                
+
                 <div class="result-item">
                     <span class="result-label">2. DCRG / Retirement Gratuity (ನಿವೃತ್ತಿ ಉಪದಾನ)</span>
                     <div class="result-value" id="dcrg">-</div>
                     <button class="toggle-btn" onclick="toggleFormula('dcrgFormula')">Show Formula</button>
-                    <div class="result-formula" id="dcrgFormula"></div>
-                </div>
-                
+                    <div class="result-formula" id="dcrgFormula"></div> </div>
+
                 <div class="result-item">
                     <span class="result-label">3. Commutation Amount (ಕಮ್ಯುಟೇಶನ್ ಹಣ / ಪರಿವರ್ತಿತ ಪಿಂಚಣಿ ಮೊತ್ತ)</span>
                     <div class="result-value" id="commutationAmount">-</div>
@@ -395,9 +393,9 @@
                     <div class="result-formula" id="commutationFormula">
                         <div class="formula-title">Formula:</div>
                         <div class="formula-steps" id="commutationFormulaSteps"></div>
-                        
+
                         <div class="info-note">
-                            <strong>Note:</strong> 
+                            <strong>Note:</strong>
                             <ul style="margin-top: 5px; margin-left: 20px;">
                                 <li>Commutation amount is sanctioned as Loan & Shall be deducted from Pension.</li>
                                 <li>Sanctioned commutation must be repaid in 15 Years.</li>
@@ -406,14 +404,14 @@
                         </div>
                     </div>
                 </div>
-                
+
                 <div class="result-item">
                     <span class="result-label">4. Family Pension (ಕುಟುಂಬ ಪಿಂಚಣಿ)</span>
                     <div class="result-value" id="familyPension">-</div>
                     <button class="toggle-btn" onclick="toggleFormula('familyPensionFormula')">Show Formula</button>
                     <div class="result-formula" id="familyPensionFormula"></div>
                 </div>
-                
+
                 <div class="result-item">
                     <span class="result-label">5. Terminal Leave Encashment (ಗಳಿಕೆ ರಜೆ ನಗದೀಕರಣ)</span>
                     <div class="result-value" id="leaveEncashment">-</div>
@@ -422,7 +420,7 @@
                 </div>
             </div>
         </div>
-        
+
         <div class="watermark">by Teju</div>
     </div>
 
@@ -430,18 +428,18 @@
         document.addEventListener('DOMContentLoaded', function() {
             // Set default value for service start date
             document.getElementById('serviceStartDate').value = "05/02/2001";
-            
+
             // Form submission handler
             document.getElementById('calculatorForm').addEventListener('submit', function(e) {
                 e.preventDefault();
                 calculateBenefits();
             });
-            
+
             // Toggle formula display function
             window.toggleFormula = function(formulaId) {
                 const formulaElement = document.getElementById(formulaId);
                 const toggleButton = event.target;
-                
+
                 if (formulaElement.style.display === 'block') {
                     formulaElement.style.display = 'none';
                     toggleButton.textContent = 'Show Formula';
@@ -452,260 +450,323 @@
                     toggleButton.classList.add('active');
                 }
             };
-            
+
             function parseDate(dateString) {
                 // Parse date in DD/MM/YYYY format
                 const parts = dateString.split('/');
-                
+
                 if(parts.length !== 3) {
                     alert("Please enter date in DD/MM/YYYY format");
                     return null;
                 }
-                
+
                 const day = parseInt(parts[0], 10);
                 const month = parseInt(parts[1], 10) - 1; // Months are 0-based in JS
                 const year = parseInt(parts[2], 10);
-                
+
                 const date = new Date(year, month, day);
-                
+
                 // Check if date is valid
-                if(isNaN(date.getTime())) {
-                    alert("Please enter a valid date");
-                    return null;
+                if(isNaN(date.getTime()) || date.getFullYear() !== year || date.getMonth() !== month || date.getDate() !== day) {
+                     alert("Please enter a valid date in DD/MM/YYYY format");
+                     return null;
                 }
-                
+
                 return date;
             }
-            
+
             function calculateRetirementDate(dob, retirementAge) {
                 // Calculate retirement date (last day of the month of retirement age birthday)
                 const retirementDate = new Date(dob);
                 retirementDate.setFullYear(dob.getFullYear() + retirementAge);
                 // Set to last day of the month
                 retirementDate.setMonth(retirementDate.getMonth() + 1, 0);
-                
+
                 return retirementDate;
             }
-            
+
             function calculateBenefits() {
                 // Get and parse input values
                 const serviceStartDate = parseDate(document.getElementById('serviceStartDate').value);
                 const dob = parseDate(document.getElementById('dateOfBirth').value);
-                
+
                 if(!serviceStartDate || !dob) {
                     return; // Stop if dates are invalid
                 }
-                
+
                 const retirementAge = parseInt(document.getElementById('retirementAge').value);
-                const monthlySalary = parseFloat(document.getElementById('monthlySalary').value);
+                const monthlySalary = parseFloat(document.getElementById('monthlySalary').value); // Now represents Retirement Basic
                 const daPercentage = parseFloat(document.getElementById('daPercentage').value);
                 let accumulatedLeave = parseFloat(document.getElementById('accumulatedLeave').value);
                 const commutationFactor = parseFloat(document.getElementById('commutationFactor').value);
-                
+
+                // Validate inputs
+                 if (isNaN(retirementAge) || isNaN(monthlySalary) || isNaN(daPercentage) || isNaN(accumulatedLeave) || isNaN(commutationFactor)) {
+                    alert("Please enter valid numbers for all fields.");
+                    return;
+                 }
+                 if (monthlySalary <= 0) {
+                     alert("Retirement Basic must be a positive number.");
+                     return;
+                 }
+
+
                 // Calculate DA amount
                 const daAmount = monthlySalary * (daPercentage / 100);
-                
+
                 // Apply maximum 300 days for leave encashment
                 const actualLeave = accumulatedLeave;
                 accumulatedLeave = Math.min(accumulatedLeave, 300);
-                
+
                 // Calculate retirement date
                 const serviceEndDate = calculateRetirementDate(dob, retirementAge);
-                
-                // Calculate service duration
+
+                // Calculate service duration using the updated logic
                 const serviceData = calculateServiceDuration(serviceStartDate, serviceEndDate);
-                
+
+                 // Check for minimum qualifying service (e.g., 10 years / 20 half-years for pension)
+                 if (serviceData.actualHalfYears < 20) { // Check actual half years before capping
+                    alert("Minimum qualifying service (10 years) not met for pension/DCRG.");
+                    // Optionally clear results or show a specific message
+                    // document.getElementById('resultContainer').style.display = 'none';
+                    // return; // Decide if calculation should stop entirely
+                 }
+
+
                 // Calculate benefits
                 const pensionData = calculateRetirementPension(monthlySalary, serviceData);
-                const dcrgData = calculateDCRG(monthlySalary, serviceData.years);
+                const dcrgData = calculateDCRG(monthlySalary, serviceData);
                 const familyPensionData = calculateFamilyPension(monthlySalary);
                 const leaveEncashmentData = calculateLeaveEncashment(monthlySalary, daAmount, accumulatedLeave, actualLeave);
-                
-                // Calculate commutation amount using the new formula
                 const commutationAmount = calculateCommutation(pensionData.pension, commutationFactor);
-                
+
                 // Format dates for display
                 const formattedDOB = formatDateDDMMYYYY(dob);
                 const formattedStartDate = formatDateDDMMYYYY(serviceStartDate);
                 const formattedEndDate = formatDateDDMMYYYY(serviceEndDate);
-                
+
                 // Update service details
                 document.getElementById('serviceDetails').innerHTML = `
                     <p><strong>Date of Birth:</strong> ${formattedDOB}</p>
                     <p><strong>Retirement Date:</strong> ${formattedEndDate}</p>
-                    <p><strong>Monthly Basic Salary:</strong> ₹${monthlySalary.toLocaleString('en-IN')}</p>
-                    <p><strong>DA (${daPercentage}%):</strong> ₹${daAmount.toLocaleString('en-IN')}</p>
-                    <p><strong>Total Salary (Basic + DA):</strong> ₹${(monthlySalary + daAmount).toLocaleString('en-IN')}</p>
+                    <p><strong>Retirement Basic Salary:</strong> ₹${monthlySalary.toLocaleString('en-IN')}</p>
+                    <p><strong>DA (${daPercentage}%):</strong> ₹${daAmount.toLocaleString('en-IN', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</p>
+                    <p><strong>Total Salary (Basic + DA):</strong> ₹${(monthlySalary + daAmount).toLocaleString('en-IN', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</p>
                     <p><strong>Service Period:</strong> ${formattedStartDate} to ${formattedEndDate}</p>
                     <p><strong>Service Duration:</strong> ${serviceData.years} years, ${serviceData.months} months, ${serviceData.days} days</p>
-                    <p><strong>Qualifying Half-Years:</strong> ${serviceData.halfYears} (Maximum: 60)</p>
+                    <p><strong>Qualifying Half-Years:</strong> ${serviceData.halfYears} (Actual: ${serviceData.actualHalfYears}, Max: 60)</p>
                     <p><strong>Accumulated Leave:</strong> ${actualLeave} days (Considered: ${accumulatedLeave} days)</p>
                     <p><strong>Commutation Factor:</strong> ${commutationFactor}</p>
                 `;
-                
+
                 // Update result values and formulas
                 document.getElementById('retirementPension').textContent = `₹${pensionData.pension.toLocaleString('en-IN')}`;
                 document.getElementById('pensionFormula').innerHTML = `
                     <div class="formula-title">Formula:</div>
                     <div class="formula-steps">
-                        (Monthly Basic Salary × Qualifying Half-Years) ÷ (2 × 60)
+                        (Retirement Basic × Qualifying Half-Years) ÷ (2 × 60)
                         <br>
-                        <br>Step 1: Calculate qualifying half-years = ${serviceData.actualHalfYears} half-years
+                        <br>Step 1: Calculate qualifying half-years = ${serviceData.actualHalfYears} half-years (Based on ${serviceData.years} Y, ${serviceData.months} M)
                         <br>Step 2: Apply maximum limit of 60 half-years = ${serviceData.halfYears} half-years
-                        <br>Step 3: Apply formula = (₹${monthlySalary.toLocaleString('en-IN')} × ${serviceData.halfYears}) ÷ (2 × 60)
-                        <br>Step 4: = (₹${monthlySalary.toLocaleString('en-IN')} × ${serviceData.halfYears}) ÷ 120
-                        <br>Step 5: = ₹${(monthlySalary * serviceData.halfYears).toLocaleString('en-IN')} ÷ 120
+                        <br>Step 3: Apply formula = (₹${monthlySalary.toLocaleString('en-IN')} × ${serviceData.halfYears}) ÷ 120
+                        <br>Step 4: = ₹${(monthlySalary * serviceData.halfYears).toLocaleString('en-IN')} ÷ 120
                         <br>Final Result: = ₹${pensionData.pension.toLocaleString('en-IN')}
                     </div>
                 `;
-                
+
                 document.getElementById('dcrg').textContent = `₹${dcrgData.dcrg.toLocaleString('en-IN')}`;
                 document.getElementById('dcrgFormula').innerHTML = `
                     <div class="formula-title">Formula:</div>
                     <div class="formula-steps">
-                        (Monthly Basic Salary × Service Years) ÷ 2
+                        (Retirement Basic × Qualifying Half-Years) ÷ 4
                         <br>
-                        <br>Step 1: Calculate = (₹${monthlySalary.toLocaleString('en-IN')} × ${serviceData.years}) ÷ 2
-                        <br>Step 2: = ₹${(monthlySalary * serviceData.years).toLocaleString('en-IN')} ÷ 2
-                        <br>Step 3: = ₹${dcrgData.calculatedAmount.toLocaleString('en-IN')}
-                        <br>Step 4: Apply maximum limit of ₹20,00,000
+                        <br>Step 1: Qualifying Half-Years = ${dcrgData.halfYearsUsed} half-years (Max: 60, based on ${serviceData.years} Y, ${serviceData.months} M)
+                        <br>Step 2: Apply formula = (₹${monthlySalary.toLocaleString('en-IN')} × ${dcrgData.halfYearsUsed}) ÷ 4
+                        <br>Step 3: = ₹${(monthlySalary * dcrgData.halfYearsUsed).toLocaleString('en-IN')} ÷ 4
+                        <br>Step 4: Calculated Amount = ₹${dcrgData.calculatedAmount.toLocaleString('en-IN')}
+                        <br>Step 5: Apply maximum limit of ₹20,00,000
                         <br>Final Result: = ₹${dcrgData.dcrg.toLocaleString('en-IN')}
                         ${dcrgData.isMaxApplied ? '<br><strong>Note:</strong> Maximum limit of ₹20,00,000 applied' : ''}
                     </div>
                 `;
-                
+
                 document.getElementById('commutationAmount').textContent = `₹${commutationAmount.toLocaleString('en-IN')}`;
                 document.getElementById('commutationFormulaSteps').innerHTML = `
-                    Retirement Pension × 12 × Commutation Factor ÷ 3
+                    (Pension ÷ 3) × 12 × Commutation Factor  [Max 1/3rd Pension is commutable]
                     <br>
-                    <br>Step 1: Apply formula = (₹${pensionData.pension.toLocaleString('en-IN')} × 12 × ${commutationFactor}) ÷ 3
-                    <br>Step 2: = (₹${(pensionData.pension * 12).toLocaleString('en-IN')} × ${commutationFactor}) ÷ 3
-                    <br>Step 3: = ₹${(pensionData.pension * 12 * commutationFactor).toLocaleString('en-IN')} ÷ 3
+                    <br>Step 1: Max Commutable Pension = ₹${pensionData.pension.toLocaleString('en-IN')} ÷ 3 = ₹${(pensionData.pension / 3).toLocaleString('en-IN', { maximumFractionDigits: 0 })}
+                    <br>Step 2: Apply formula = (₹${(pensionData.pension / 3).toLocaleString('en-IN', { maximumFractionDigits: 0 })} × 12 × ${commutationFactor})
+                    <br>Step 3: = (₹${((pensionData.pension / 3) * 12).toLocaleString('en-IN', { maximumFractionDigits: 0 })} × ${commutationFactor})
                     <br>Final Result: = ₹${commutationAmount.toLocaleString('en-IN')}
                 `;
-                
+
                 document.getElementById('familyPension').textContent = `₹${familyPensionData.toLocaleString('en-IN')} + DA`;
                 document.getElementById('familyPensionFormula').innerHTML = `
                     <div class="formula-title">Formula:</div>
                     <div class="formula-steps">
-                        (Monthly Basic Salary × 30) ÷ 100
+                        (Retirement Basic × 30) ÷ 100
                         <br>
                         <br>Step 1: Calculate = (₹${monthlySalary.toLocaleString('en-IN')} × 30) ÷ 100
                         <br>Step 2: = ₹${(monthlySalary * 30).toLocaleString('en-IN')} ÷ 100
                         <br>Final Result: = ₹${familyPensionData.toLocaleString('en-IN')} + DA
                     </div>
                 `;
-                
+
                 document.getElementById('leaveEncashment').textContent = `₹${leaveEncashmentData.encashment.toLocaleString('en-IN')}`;
                 document.getElementById('leaveEncashmentFormula').innerHTML = `
                     <div class="formula-title">Formula:</div>
                     <div class="formula-steps">
-                        (Basic Pay + DA) × (Accumulated Leave ÷ 30)
+                        (Retirement Basic + DA) × (Accumulated Leave ÷ 30)
                         <br>
                         <br>Step 1: Actual accumulated leave = ${actualLeave} days
                         <br>Step 2: Apply maximum limit of 300 days = ${accumulatedLeave} days
-                        <br>Step 3: Calculate DA = ${daPercentage}% of ₹${monthlySalary.toLocaleString('en-IN')} = ₹${daAmount.toLocaleString('en-IN')}
-                        <br>Step 4: Basic Pay + DA = ₹${monthlySalary.toLocaleString('en-IN')} + ₹${daAmount.toLocaleString('en-IN')} = ₹${(monthlySalary + daAmount).toLocaleString('en-IN')}
-                        <br>Step 5: Calculate = (₹${(monthlySalary + daAmount).toLocaleString('en-IN')}) × (${accumulatedLeave} ÷ 30)
-                        <br>Step 6: = ₹${(monthlySalary + daAmount).toLocaleString('en-IN')} × ${(accumulatedLeave / 30).toFixed(2)}
+                        <br>Step 3: Calculate DA = ${daPercentage}% of ₹${monthlySalary.toLocaleString('en-IN')} = ₹${daAmount.toLocaleString('en-IN', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
+                        <br>Step 4: Retirement Basic + DA = ₹${monthlySalary.toLocaleString('en-IN')} + ₹${daAmount.toLocaleString('en-IN', { minimumFractionDigits: 2, maximumFractionDigits: 2 })} = ₹${(monthlySalary + daAmount).toLocaleString('en-IN', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
+                        <br>Step 5: Calculate = (₹${(monthlySalary + daAmount).toLocaleString('en-IN', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}) × (${accumulatedLeave} ÷ 30)
+                        <br>Step 6: = ₹${(monthlySalary + daAmount).toLocaleString('en-IN', { minimumFractionDigits: 2, maximumFractionDigits: 2 })} × ${(accumulatedLeave / 30).toFixed(4)}
                         <br>Final Result: = ₹${leaveEncashmentData.encashment.toLocaleString('en-IN')}
                         ${leaveEncashmentData.isMaxApplied ? '<br><strong>Note:</strong> Maximum limit of 300 days applied' : ''}
                     </div>
                 `;
-                
+
                 // Show results
                 document.getElementById('resultContainer').style.display = 'block';
-                
+
                 // Scroll to results
                 document.getElementById('resultContainer').scrollIntoView({ behavior: 'smooth' });
             }
-            
+
             function calculateServiceDuration(startDate, endDate) {
                 // Calculate exact years, months, and days of service
+                 if (endDate < startDate) {
+                    return { years: 0, months: 0, days: 0, actualHalfYears: 0, halfYears: 0 };
+                 }
+
+
                 let years = endDate.getFullYear() - startDate.getFullYear();
                 let months = endDate.getMonth() - startDate.getMonth();
                 let days = endDate.getDate() - startDate.getDate();
-                
-                // Adjust negative days
+
+                // Adjust for day calculation (include end date)
+                days += 1;
+                 let lastDayOfPrevMonth = new Date(endDate.getFullYear(), endDate.getMonth() + 1, 0).getDate();
+
                 if (days < 0) {
                     months--;
-                    // Get the last day of the previous month
-                    const lastDayOfPrevMonth = new Date(endDate.getFullYear(), endDate.getMonth(), 0).getDate();
+                     lastDayOfPrevMonth = new Date(endDate.getFullYear(), endDate.getMonth(), 0).getDate();
                     days += lastDayOfPrevMonth;
-                }
-                
-                // Adjust negative months
+                 } else if (days > lastDayOfPrevMonth) {
+                    days -= lastDayOfPrevMonth;
+                    months++;
+                 }
+
+
+                // Adjust for month calculation
                 if (months < 0) {
                     years--;
                     months += 12;
                 }
-                
-                // Calculate half-years for pension calculation
-                const actualHalfYears = Math.floor(years * 2 + (months >= 6 ? 1 : 0));
-                
-                // Apply maximum of 60 half-years
-                const halfYears = Math.min(actualHalfYears, 60);
-                
+                 if (months >= 12) {
+                    years++;
+                    months -= 12;
+                 }
+
+                // Calculate Half-Years from Full Years:
+                let ruleBasedHalfYears = years * 2;
+
+                // Determine Qualifying Months for Fractional Year:
+                // MODIFICATION START: Use only full months, ignore days for rounding check
+                let qualifyingMonths = months; // Use the calculated months directly
+                // REMOVED: if (days > 0) qualifyingMonths++; // Do NOT increment month count based on days
+                // MODIFICATION END
+
+                // Apply Rounding Rules based on Qualifying Months:
+                if (qualifyingMonths >= 9) { // 9+ full months = 2 half-years
+                    ruleBasedHalfYears += 2;
+                } else if (qualifyingMonths >= 3) { // 3 to 8 full months = 1 half-year
+                    ruleBasedHalfYears += 1;
+                }
+                // Less than 3 full months = 0 additional half-years
+
+                const finalActualHalfYears = ruleBasedHalfYears; // Total calculated half-years (uncapped)
+
+                // Apply maximum of 60 half-years (30 years of service)
+                const halfYears = Math.min(finalActualHalfYears, 60); // Capped value used for calculations
+
                 return {
                     years: years,
-                    months: months,
-                    days: days,
-                    actualHalfYears: actualHalfYears,
-                    halfYears: halfYears
+                    months: months, // Return the actual calculated months
+                    days: days,     // Return the actual calculated days (after adjustments)
+                    actualHalfYears: finalActualHalfYears, // Actual calculated half-years before capping
+                    halfYears: halfYears // Capped half-years for calculation
                 };
             }
-            
+
             function calculateRetirementPension(salary, serviceData) {
-                // Formula: (Monthly salary × Qualifying half-years) ÷ (2 × 60)
+                // Formula: (Retirement Basic × Qualifying half-years) ÷ 120
+                 if (serviceData.actualHalfYears < 20) return { pension: 0, halfYears: serviceData.halfYears };
+
                 const pension = Math.round((salary * serviceData.halfYears) / 120);
-                
+
                 return {
                     pension: pension,
                     halfYears: serviceData.halfYears
                 };
             }
-            
-            function calculateDCRG(salary, years) {
-                // Formula: (Monthly salary × Service years) ÷ 2
-                // Max limit of ₹20 lakhs
-                const calculatedAmount = Math.round((salary * years) / 2);
+
+            function calculateDCRG(salary, serviceData) {
+                // Formula: (Retirement Basic × Qualifying Half-Years) ÷ 4
+                 if (serviceData.actualHalfYears < 10) { // Min 5 years service for DCRG
+                     return { calculatedAmount: 0, dcrg: 0, isMaxApplied: false, halfYearsUsed: serviceData.halfYears };
+                 }
+
+                const calculatedAmount = Math.round((salary * serviceData.halfYears) / 4);
                 const maxLimit = 2000000; // 20 lakhs
                 const isMaxApplied = calculatedAmount > maxLimit;
                 const dcrg = Math.min(calculatedAmount, maxLimit);
-                
+
                 return {
                     calculatedAmount: calculatedAmount,
                     dcrg: dcrg,
-                    isMaxApplied: isMaxApplied
+                    isMaxApplied: isMaxApplied,
+                    halfYearsUsed: serviceData.halfYears
                 };
             }
-            
+
             function calculateFamilyPension(salary) {
-                // Formula: (Monthly salary × 30) ÷ 100
-                return Math.round((salary * 30) / 100);
+                // Formula: (Retirement Basic × 30) ÷ 100
+                const calculatedPension = Math.round((salary * 30) / 100);
+                return calculatedPension;
             }
-            
+
             function calculateLeaveEncashment(basicSalary, daAmount, accumulatedLeave, actualLeave) {
                 // Formula: (Basic Pay + DA) × (Accumulated Leave ÷ 30)
                 const isMaxApplied = actualLeave > 300;
                 const totalSalary = basicSalary + daAmount;
                 const encashment = Math.round(totalSalary * (accumulatedLeave / 30));
-                
+
                 return {
                     encashment: encashment,
                     isMaxApplied: isMaxApplied
                 };
             }
-            
+
             function calculateCommutation(pension, commutationFactor) {
-                // Formula: Retirement Pension × 12 × Commutation Factor ÷ 3
-                return Math.round((pension * 12 * commutationFactor) / 3);
+                 // Formula: (Pension Commuted) * 12 * Factor
+                 // Max commutable is 1/3rd of pension
+                 const maxCommutablePensionPortion = Math.floor(pension / 3);
+                 if (maxCommutablePensionPortion <= 0) return 0;
+
+                 // Calculate commutation based on the max commutable portion
+                 const standardCommutation = Math.round(maxCommutablePensionPortion * 12 * commutationFactor);
+                return standardCommutation;
             }
-            
+
             function formatDateDDMMYYYY(date) {
+                 if (!date || isNaN(date.getTime())) return "Invalid Date";
                 return `${padZero(date.getDate())}/${padZero(date.getMonth() + 1)}/${date.getFullYear()}`;
             }
-            
+
             function padZero(num) {
                 return num.toString().padStart(2, '0');
             }
