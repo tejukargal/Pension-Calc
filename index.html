@@ -457,26 +457,36 @@
         }
 
         .service-details {
-            background: var(--primary-light);
-            border: 1px solid #bfdbfe;
-            border-radius: var(--radius);
-            padding: 1rem;
+            background: transparent;
+            border: none;
+            padding: 0;
             margin-bottom: 1.25rem;
         }
 
         .detail-grid {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
-            gap: 8px;
+            gap: 10px;
         }
 
         .detail-item {
             background: #fff;
-            border: 1px solid #bfdbfe;
-            border-radius: 8px;
-            padding: 8px 10px;
+            border: 1.5px solid var(--border);
+            border-radius: var(--radius);
+            padding: 11px 13px 10px;
             min-width: 0;
             overflow: hidden;
+            position: relative;
+        }
+
+        /* Same left accent bar as form-group */
+        .detail-item::before {
+            content: '';
+            position: absolute;
+            left: 0; top: 12%; bottom: 12%;
+            width: 3px;
+            background: var(--border);
+            border-radius: 0 2px 2px 0;
         }
 
         .detail-item-full {
@@ -484,17 +494,17 @@
         }
 
         .detail-label {
-            font-size: 0.63rem;
+            font-size: 0.68rem;
             font-weight: 700;
             text-transform: uppercase;
             letter-spacing: 0.07em;
-            color: var(--primary);
+            color: var(--text-secondary);
             margin-bottom: 3px;
         }
 
         .detail-value {
             font-family: 'DM Mono', monospace;
-            font-size: 0.88rem;
+            font-size: 0.9rem;
             font-weight: 500;
             color: var(--text-primary);
             word-break: break-word;
