@@ -4,293 +4,644 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Retirement Benefits Calculator</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400&family=Noto+Sans+Kannada:wght@400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
     <style>
         :root {
-            --primary: #4361ee;
-            --primary-dark: #3a56d4;
-            --secondary: #7209b7;
-            --light: #f8f9fa;
-            --dark: #212529;
-            --success: #4caf50;
-            --danger: #f44336;
-            --info: #0dcaf0;
+            --primary: #1d4ed8;
+            --primary-dark: #1e40af;
+            --primary-light: #eff6ff;
+            --accent: #f59e0b;
+            --accent-light: #fffbeb;
+            --secondary: #7c3aed;
+            --success: #059669;
+            --success-light: #ecfdf5;
+            --danger: #dc2626;
+            --info: #0284c7;
+            --surface: #f8fafc;
+            --card: #ffffff;
+            --border: #e2e8f0;
+            --border-focus: #1d4ed8;
+            --text-primary: #0f172a;
+            --text-secondary: #475569;
+            --text-muted: #94a3b8;
+            --shadow-sm: 0 1px 3px rgba(0,0,0,0.08), 0 1px 2px rgba(0,0,0,0.06);
+            --shadow-md: 0 4px 12px rgba(0,0,0,0.08), 0 2px 6px rgba(0,0,0,0.06);
+            --shadow-focus: 0 0 0 3px rgba(29, 78, 216, 0.12);
+            --radius: 10px;
+            --radius-sm: 6px;
         }
 
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
         }
 
         body {
-            background-color: #f5f5f5;
-            color: var(--dark);
+            font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: var(--surface);
+            color: var(--text-primary);
             line-height: 1.6;
+            min-height: 100vh;
+        }
+
+        /* ── Background texture ── */
+        body::before {
+            content: '';
+            position: fixed;
+            inset: 0;
+            background:
+                radial-gradient(ellipse 80% 50% at 20% -10%, rgba(29,78,216,0.07) 0%, transparent 60%),
+                radial-gradient(ellipse 60% 40% at 80% 110%, rgba(124,58,237,0.05) 0%, transparent 60%);
+            pointer-events: none;
+            z-index: 0;
         }
 
         .container {
-            max-width: 800px;
+            position: relative;
+            z-index: 1;
+            max-width: 780px;
             margin: 0 auto;
-            padding: 20px;
+            padding: 16px;
         }
 
+        /* ── Header ── */
         header {
-            background-color: var(--primary);
+            background: linear-gradient(135deg, #1d4ed8 0%, #1e40af 50%, #312e81 100%);
             color: white;
             text-align: center;
-            padding: 1rem;
-            border-radius: 8px 8px 0 0;
-            margin-bottom: 1.5rem;
+            padding: 1.5rem 1.25rem 1.25rem;
+            border-radius: var(--radius) var(--radius) 0 0;
+            margin-bottom: 0;
+            position: relative;
+            overflow: hidden;
         }
 
+        header::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: repeating-linear-gradient(
+                45deg,
+                transparent,
+                transparent 20px,
+                rgba(255,255,255,0.02) 20px,
+                rgba(255,255,255,0.02) 40px
+            );
+        }
+
+        header::after {
+            content: '';
+            position: absolute;
+            bottom: 0; left: 0; right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, #f59e0b, #fbbf24, #f59e0b);
+        }
+
+        header h1 {
+            font-size: clamp(1.15rem, 4vw, 1.5rem);
+            font-weight: 800;
+            letter-spacing: -0.02em;
+            position: relative;
+            z-index: 1;
+        }
+
+        header p.subtitle {
+            font-size: 0.75rem;
+            opacity: 0.75;
+            margin-top: 0.25rem;
+            font-family: 'Noto Sans Kannada', sans-serif;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* ── Card ── */
         .card {
-            background-color: white;
-            border-radius: 8px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            background: var(--card);
+            border-radius: 0 0 var(--radius) var(--radius);
+            box-shadow: var(--shadow-md);
             overflow: hidden;
-            margin-bottom: 1.5rem;
+            margin-bottom: 1.25rem;
+            border: 1px solid var(--border);
+            border-top: none;
         }
 
         .card-header {
-            background-color: var(--primary);
-            color: white;
-            padding: 1rem;
-            font-weight: bold;
+            background: #f8fafc;
+            border-bottom: 1.5px solid var(--border);
+            padding: 0.75rem 1.25rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .card-header-icon {
+            width: 28px;
+            height: 28px;
+            background: var(--primary-light);
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .card-header-icon svg {
+            width: 15px;
+            height: 15px;
+            color: var(--primary);
+            fill: none;
+            stroke: currentColor;
+            stroke-width: 2;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+        }
+
+        .card-header span {
+            font-weight: 700;
+            font-size: 0.88rem;
+            color: var(--text-primary);
+            letter-spacing: -0.01em;
         }
 
         .card-body {
-            padding: 1.5rem;
+            padding: 1.25rem;
         }
 
+        /* ── Form Grid — 2 columns default (mobile-first) ── */
+        .form-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 10px;
+            margin-bottom: 14px;
+        }
+
+        /* Fields that span both columns */
+        .form-group-full {
+            grid-column: 1 / -1;
+        }
+
+        /* ── Form Group — the square box ── */
         .form-group {
-            margin-bottom: 1rem;
+            background: #fff;
+            border: 1.5px solid var(--border);
+            border-radius: var(--radius);
+            padding: 11px 13px 10px;
+            transition: border-color 0.18s ease, box-shadow 0.18s ease, background 0.18s ease;
+            position: relative;
+            cursor: text;
         }
 
-        label {
+        .form-group:focus-within {
+            border-color: var(--border-focus);
+            box-shadow: var(--shadow-focus);
+            background: #fdfeff;
+        }
+
+        /* Accent bar on left edge */
+        .form-group::before {
+            content: '';
+            position: absolute;
+            left: 0; top: 12%; bottom: 12%;
+            width: 3px;
+            background: var(--border);
+            border-radius: 0 2px 2px 0;
+            transition: background 0.18s ease, top 0.18s ease, bottom 0.18s ease;
+        }
+
+        .form-group:focus-within::before {
+            background: var(--primary);
+            top: 0; bottom: 0;
+            border-radius: 0 2px 2px 0;
+        }
+
+        /* ── Label ── */
+        .form-group label {
             display: block;
-            margin-bottom: 0.5rem;
-            font-weight: 500;
-        }
-
-        .kannada {
-            font-style: normal;
-            color: var(--secondary);
-            font-size: 0.75rem;
-            opacity: 0.8;
-        }
-
-        input, select {
-            width: 100%;
-            padding: 10px;
-            border: 1px solid #ddd;
-            border-radius: 4px;
-            font-size: 1rem;
-            transition: border-color 0.3s;
-        }
-
-        input:focus, select:focus {
-            border-color: var(--primary);
-            outline: none;
-            box-shadow: 0 0 0 3px rgba(67, 97, 238, 0.3);
-        }
-
-        button {
-            background-color: var(--primary);
-            color: white;
-            border: none;
-            padding: 12px 24px;
-            font-size: 1rem;
-            border-radius: 4px;
-            cursor: pointer;
-            transition: background-color 0.3s;
-            width: 100%;
-            margin-top: 1rem;
-        }
-
-        button:hover {
-            background-color: var(--primary-dark);
-        }
-
-        .result-container {
-            display: none;
-            background-color: white;
-            border-radius: 8px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            margin-top: 2rem;
-        }
-
-        .result-header {
-            background-color: var(--success);
-            color: white;
-            padding: 1rem;
-            border-radius: 8px 8px 0 0;
-            text-align: center;
-        }
-
-        .result-body {
-            padding: 1.5rem;
-        }
-
-        .result-item {
-            margin-bottom: 1.5rem;
-            padding-bottom: 1rem;
-            border-bottom: 1px solid #eee;
-        }
-
-        .result-item:last-child {
-            border-bottom: none;
-        }
-
-        .result-label {
-            font-weight: 600;
-            margin-bottom: 0.5rem;
-            display: block;
-            font-size: 1.1rem;
-            color: var(--primary-dark);
-        }
-
-        .result-value {
+            font-size: 0.68rem;
             font-weight: 700;
-            font-size: 1.2rem;
-            margin-bottom: 0.5rem;
+            text-transform: uppercase;
+            letter-spacing: 0.07em;
+            color: var(--text-secondary);
+            margin-bottom: 2px;
+            transition: color 0.18s;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            cursor: default;
         }
 
-        .result-formula {
-            background-color: #f5f5f5;
-            padding: 0.8rem;
-            border-radius: 4px;
-            margin-top: 0.5rem;
-            font-size: 0.9rem;
-            display: none; /* Hidden by default */
+        .form-group:focus-within label {
+            color: var(--primary);
         }
 
-        .formula-title {
-            font-weight: 600;
-            margin-bottom: 0.5rem;
-            color: var(--secondary);
+        /* ── Kannada subtitle ── */
+        .kannada {
+            display: block;
+            font-family: 'Noto Sans Kannada', sans-serif;
+            font-size: 0.68rem;
+            font-weight: 500;
+            color: var(--text-muted);
+            font-style: normal;
+            margin-bottom: 5px;
+            line-height: 1.3;
+            transition: color 0.18s;
         }
 
-        .formula-steps {
-            margin-left: 1rem;
+        .form-group:focus-within .kannada {
+            color: #93c5fd;
         }
 
-        .service-details {
-            background-color: var(--light);
-            padding: 1rem;
-            border-radius: 4px;
-            margin-bottom: 1.5rem;
-            border-left: 4px solid var(--info);
+        /* ── Inputs ── */
+        .form-group input,
+        .form-group select {
+            width: 100%;
+            border: none;
+            outline: none;
+            padding: 0;
+            font-family: 'DM Mono', 'Plus Jakarta Sans', monospace;
+            font-size: 0.95rem;
+            font-weight: 500;
+            color: var(--text-primary);
+            background: transparent;
+            -webkit-appearance: none;
+            appearance: none;
         }
 
-        .service-details p {
-            margin-bottom: 0.5rem;
+        .form-group input::placeholder {
+            color: var(--text-muted);
+            font-weight: 400;
+            font-size: 0.85rem;
         }
 
-        @media (max-width: 768px) {
-            .container {
-                padding: 10px;
-            }
+        .form-group input[type="number"]::-webkit-inner-spin-button,
+        .form-group input[type="number"]::-webkit-outer-spin-button {
+            opacity: 0;
+        }
 
-            header {
-                padding: 0.8rem;
-            }
+        .form-group input[type="number"]:hover::-webkit-inner-spin-button,
+        .form-group input[type="number"]:focus::-webkit-inner-spin-button {
+            opacity: 0.5;
+        }
 
-            .card-body {
-                padding: 1rem;
-            }
-
-            input, select, button {
-                padding: 10px;
-            }
-
-            .result-formula {
-                font-size: 0.85rem;
-            }
+        /* ── Tooltip (inline with label) ── */
+        .tooltip {
+            position: relative;
+            display: inline-flex;
+            align-items: center;
+            vertical-align: middle;
         }
 
         .info-icon {
-            display: inline-block;
-            width: 18px;
-            height: 18px;
-            background-color: var(--info);
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 14px;
+            height: 14px;
+            background: var(--text-muted);
             color: white;
             border-radius: 50%;
-            text-align: center;
-            line-height: 18px;
-            margin-left: 5px;
-            font-size: 12px;
+            font-size: 9px;
+            font-style: normal;
+            margin-left: 3px;
             cursor: help;
+            font-weight: 700;
+            flex-shrink: 0;
+            transition: background 0.15s;
+            font-family: 'Plus Jakarta Sans', sans-serif;
         }
 
-        .tooltip {
-            position: relative;
-            display: inline-block;
+        .form-group:focus-within .info-icon {
+            background: var(--primary);
         }
 
         .tooltip .tooltip-text {
             visibility: hidden;
-            width: 200px;
-            background-color: #333;
-            color: #fff;
-            text-align: center;
-            border-radius: 6px;
-            padding: 5px;
+            width: 190px;
+            background: #0f172a;
+            color: #e2e8f0;
+            text-align: left;
+            border-radius: 8px;
+            padding: 8px 10px;
             position: absolute;
-            z-index: 1;
-            bottom: 125%;
+            z-index: 100;
+            bottom: calc(100% + 8px);
             left: 50%;
-            margin-left: -100px;
+            transform: translateX(-50%);
             opacity: 0;
-            transition: opacity 0.3s;
-            font-weight: normal;
-            font-size: 0.8rem;
+            transition: opacity 0.2s, transform 0.2s;
+            font-weight: 400;
+            font-size: 0.75rem;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            text-transform: none;
+            letter-spacing: 0;
+            pointer-events: none;
+            line-height: 1.5;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.25);
+        }
+
+        .tooltip .tooltip-text::after {
+            content: '';
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            border: 5px solid transparent;
+            border-top-color: #0f172a;
         }
 
         .tooltip:hover .tooltip-text {
             visibility: visible;
             opacity: 1;
+            transform: translateX(-50%) translateY(-2px);
+        }
+
+        /* ── Calculate Button ── */
+        .btn-calculate {
+            width: 100%;
+            padding: 14px 24px;
+            background: linear-gradient(135deg, #1d4ed8 0%, #2563eb 100%);
+            color: white;
+            border: none;
+            border-radius: var(--radius);
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-size: 0.95rem;
+            font-weight: 700;
+            letter-spacing: 0.01em;
+            cursor: pointer;
+            transition: transform 0.15s ease, box-shadow 0.15s ease, background 0.15s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            box-shadow: 0 4px 14px rgba(29, 78, 216, 0.35);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-calculate::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, rgba(255,255,255,0.1) 0%, transparent 60%);
+            opacity: 0;
+            transition: opacity 0.2s;
+        }
+
+        .btn-calculate:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 6px 20px rgba(29, 78, 216, 0.45);
+            background: linear-gradient(135deg, #1e40af 0%, #1d4ed8 100%);
+        }
+
+        .btn-calculate:hover::before {
+            opacity: 1;
+        }
+
+        .btn-calculate:active {
+            transform: translateY(0);
+            box-shadow: 0 2px 8px rgba(29, 78, 216, 0.3);
+        }
+
+        .btn-calculate svg {
+            width: 18px;
+            height: 18px;
+            flex-shrink: 0;
+        }
+
+        /* ── Results ── */
+        .result-container {
+            display: none;
+            background: var(--card);
+            border-radius: var(--radius);
+            box-shadow: var(--shadow-md);
+            margin-top: 1.25rem;
+            overflow: hidden;
+            border: 1px solid var(--border);
+        }
+
+        .result-header {
+            background: linear-gradient(135deg, var(--success) 0%, #047857 100%);
+            color: white;
+            padding: 1rem 1.25rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .result-header::after {
+            content: '';
+            position: absolute;
+            bottom: 0; left: 0; right: 0;
+            height: 2px;
+            background: rgba(255,255,255,0.3);
+        }
+
+        .result-header h2 {
+            font-size: 1.1rem;
+            font-weight: 800;
+            letter-spacing: -0.01em;
+        }
+
+        .result-body {
+            padding: 1.25rem;
+        }
+
+        .service-details {
+            background: var(--primary-light);
+            border: 1px solid #bfdbfe;
+            border-radius: var(--radius);
+            padding: 1rem 1.1rem;
+            margin-bottom: 1.25rem;
+            font-size: 0.85rem;
+        }
+
+        .service-details p {
+            margin-bottom: 4px;
+            color: var(--text-secondary);
+            display: flex;
+            gap: 6px;
+        }
+
+        .service-details p strong {
+            color: var(--text-primary);
+            font-weight: 600;
+            white-space: nowrap;
+        }
+
+        .result-item {
+            margin-bottom: 1.25rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .result-item:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+        }
+
+        .result-label {
+            font-weight: 700;
+            margin-bottom: 4px;
+            display: block;
+            font-size: 0.88rem;
+            color: var(--primary-dark);
+            letter-spacing: -0.01em;
+        }
+
+        .result-value {
+            font-family: 'DM Mono', monospace;
+            font-weight: 500;
+            font-size: 1.3rem;
+            margin-bottom: 4px;
+            color: var(--text-primary);
+            letter-spacing: -0.02em;
+        }
+
+        .result-formula {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-sm);
+            padding: 0.75rem 1rem;
+            margin-top: 6px;
+            font-size: 0.83rem;
+            display: none;
+            line-height: 1.7;
+            color: var(--text-secondary);
+        }
+
+        .formula-title {
+            font-weight: 700;
+            margin-bottom: 4px;
+            color: var(--secondary);
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .formula-steps {
+            margin-left: 0.75rem;
+            font-family: 'DM Mono', monospace;
+            font-size: 0.8rem;
+        }
+
+        .toggle-btn {
+            background: var(--primary-light);
+            color: var(--primary);
+            border: 1px solid #bfdbfe;
+            padding: 4px 10px;
+            font-size: 0.75rem;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-weight: 600;
+            border-radius: 20px;
+            cursor: pointer;
+            margin-top: 6px;
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            transition: background 0.15s, border-color 0.15s;
+        }
+
+        .toggle-btn:hover {
+            background: #dbeafe;
+        }
+
+        .toggle-btn.active {
+            background: var(--primary);
+            color: white;
+            border-color: var(--primary);
+        }
+
+        .info-note {
+            background: #fffbeb;
+            border: 1px solid #fde68a;
+            border-left: 3px solid var(--accent);
+            padding: 0.75rem 1rem;
+            margin-top: 8px;
+            font-size: 0.82rem;
+            border-radius: var(--radius-sm);
+            color: #78350f;
         }
 
         .watermark {
             text-align: center;
-            padding: 10px;
-            color: #999;
-            font-style: italic;
-            font-size: 0.8rem;
-            margin-top: 1rem;
-        }
-
-        .info-note {
-            background-color: #fff3cd;
-            border-left: 4px solid #ffc107;
-            padding: 0.8rem;
+            padding: 12px;
+            color: var(--text-muted);
+            font-size: 0.75rem;
             margin-top: 0.5rem;
-            font-size: 0.9rem;
-            border-radius: 4px;
         }
 
-        .toggle-btn {
-            background-color: #f1f1f1;
-            color: #555;
-            border: none;
-            padding: 5px 10px;
-            font-size: 0.8rem;
-            border-radius: 4px;
-            cursor: pointer;
-            margin-top: 0.5rem;
-            margin-bottom: 0.5rem;
-            width: auto;
-            display: inline-block;
+        .watermark strong {
+            color: var(--text-secondary);
         }
 
-        .toggle-btn:hover {
-            background-color: #e0e0e0;
+        /* ── Responsive: Desktop — keep 2-col but wider ── */
+        @media (min-width: 600px) {
+            .form-grid {
+                gap: 12px;
+            }
+
+            .form-group {
+                padding: 13px 15px 12px;
+            }
+
+            .card-body {
+                padding: 1.5rem;
+            }
         }
 
-        .toggle-btn.active {
-            background-color: var(--info);
-            color: white;
+        @media (min-width: 768px) {
+            .container {
+                padding: 24px 20px;
+            }
+
+            header {
+                padding: 1.75rem 1.5rem 1.5rem;
+            }
+
+            header h1 {
+                font-size: 1.6rem;
+            }
+
+            .form-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 14px;
+            }
+
+            .form-group {
+                padding: 14px 16px 13px;
+            }
+
+            .form-group label {
+                font-size: 0.7rem;
+            }
+
+            .form-group input,
+            .form-group select {
+                font-size: 1rem;
+            }
+        }
+
+        /* Small phones: still 2-col but tighter */
+        @media (max-width: 360px) {
+            .form-grid {
+                gap: 8px;
+            }
+
+            .form-group {
+                padding: 9px 10px 8px;
+            }
+
+            .form-group input,
+            .form-group select {
+                font-size: 0.88rem;
+            }
+
+            .kannada {
+                font-size: 0.62rem;
+            }
         }
     </style>
 </head>
@@ -298,106 +649,152 @@
     <div class="container">
         <header>
             <h1>Retirement Benefits Calculator</h1>
+            <p class="subtitle">ನಿವೃತ್ತಿ ಸೌಲಭ್ಯಗಳ ಲೆಕ್ಕಾಚಾರ</p>
         </header>
 
         <div class="card">
-            <div class="card-header">Enter Your Details</div>
+            <div class="card-header">
+                <div class="card-header-icon">
+                    <svg viewBox="0 0 24 24"><path d="M9 5H7a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2h-2"/><rect x="9" y="3" width="6" height="4" rx="2"/><path d="M9 12h6M9 16h4"/></svg>
+                </div>
+                <span>Enter Your Service Details</span>
+            </div>
+
             <div class="card-body">
                 <form id="calculatorForm">
-                    <div class="form-group">
-                        <label for="serviceStartDate">Service Start Date <span class="kannada">(ಸೇವೆಗೆ ಸೇರಿದ ದಿನಾಂಕ)</span> <span class="tooltip"><span class="info-icon">i</span><span class="tooltip-text">Enter date in DD/MM/YYYY format</span></span></label>
-                        <input type="text" id="serviceStartDate" placeholder="DD/MM/YYYY" required>
-                    </div>
+                    <div class="form-grid">
 
-                    <div class="form-group">
-                        <label for="dateOfBirth">Date of Birth <span class="kannada">(ಜನ್ಮ ದಿನಾಂಕ)</span> <span class="tooltip"><span class="info-icon">i</span><span class="tooltip-text">Enter date in DD/MM/YYYY format</span></span></label>
-                        <input type="text" id="dateOfBirth" placeholder="DD/MM/YYYY" required>
-                    </div>
+                        <!-- Service Start Date -->
+                        <div class="form-group">
+                            <label for="serviceStartDate">
+                                Service Start Date
+                                <span class="tooltip">
+                                    <span class="info-icon">i</span>
+                                    <span class="tooltip-text">Enter date in DD/MM/YYYY format</span>
+                                </span>
+                            </label>
+                            <span class="kannada">ಸೇವೆಗೆ ಸೇರಿದ ದಿನಾಂಕ</span>
+                            <input type="text" id="serviceStartDate" placeholder="DD/MM/YYYY" required>
+                        </div>
 
-                    <div class="form-group">
-                        <label for="retirementAge">Retirement Age <span class="kannada">(ನಿವೃತ್ತಿ ವಯಸ್ಸು)</span>
-                            <span class="tooltip">
-                                <span class="info-icon">i</span>
-                                <span class="tooltip-text">Standard retirement age for government employees in India is 60 years</span>
-                            </span>
-                        </label>
-                        <input type="number" id="retirementAge" value="60" min="50" max="65" required>
-                    </div>
+                        <!-- Date of Birth -->
+                        <div class="form-group">
+                            <label for="dateOfBirth">
+                                Date of Birth
+                                <span class="tooltip">
+                                    <span class="info-icon">i</span>
+                                    <span class="tooltip-text">Enter date in DD/MM/YYYY format</span>
+                                </span>
+                            </label>
+                            <span class="kannada">ಜನ್ಮ ದಿನಾಂಕ</span>
+                            <input type="text" id="dateOfBirth" placeholder="DD/MM/YYYY" required>
+                        </div>
 
-                    <div class="form-group">
-                        <label for="monthlySalary">Retirement Basic <span class="kannada">(ನಿವೃತ್ತಿ ಮೂಲ ವೇತನ)</span></label>
-                        <input type="number" id="monthlySalary" required min="1000" placeholder="e.g. 58250">
-                    </div>
+                        <!-- Retirement Age -->
+                        <div class="form-group">
+                            <label for="retirementAge">
+                                Retirement Age
+                                <span class="tooltip">
+                                    <span class="info-icon">i</span>
+                                    <span class="tooltip-text">Standard retirement age for government employees in India is 60 years</span>
+                                </span>
+                            </label>
+                            <span class="kannada">ನಿವೃತ್ತಿ ವಯಸ್ಸು</span>
+                            <input type="number" id="retirementAge" value="60" min="50" max="65" required>
+                        </div>
 
-                    <div class="form-group">
-                        <label for="daPercentage">DA Percentage <span class="kannada">(ತುಟ್ಟಿ ಭತ್ಯೆ ಶೇಕಡಾ)</span>
-                            <span class="tooltip">
-                                <span class="info-icon">i</span>
-                                <span class="tooltip-text">Dearness Allowance percentage of Basic Pay</span>
-                            </span>
-                        </label>
-                        <input type="number" id="daPercentage" value="0" min="0" max="200" step="0.01" required>
-                    </div>
+                        <!-- Retirement Basic -->
+                        <div class="form-group">
+                            <label for="monthlySalary">Retirement Basic</label>
+                            <span class="kannada">ನಿವೃತ್ತಿ ಮೂಲ ವೇತನ</span>
+                            <input type="number" id="monthlySalary" required min="1000" placeholder="e.g. 58250">
+                        </div>
 
-                    <div class="form-group">
-                        <label for="accumulatedLeave">Accumulated Leave <span class="kannada">(ಸಂಗ್ರಹಿತ ರಜೆ)</span>
-                            <span class="tooltip">
-                                <span class="info-icon">i</span>
-                                <span class="tooltip-text">Maximum 300 days considered for encashment</span>
-                            </span>
-                        </label>
-                        <input type="number" id="accumulatedLeave" value="300" required min="0" max="1000">
-                    </div>
+                        <!-- DA Percentage -->
+                        <div class="form-group">
+                            <label for="daPercentage">
+                                DA Percentage
+                                <span class="tooltip">
+                                    <span class="info-icon">i</span>
+                                    <span class="tooltip-text">Dearness Allowance percentage of Basic Pay</span>
+                                </span>
+                            </label>
+                            <span class="kannada">ತುಟ್ಟಿ ಭತ್ಯೆ ಶೇಕಡಾ</span>
+                            <input type="number" id="daPercentage" value="0" min="0" max="200" step="0.01" required>
+                        </div>
 
-                    <div class="form-group">
-                        <label for="commutationFactor">Commutation Factor <span class="kannada">(ಕಮ್ಯುಟೇಶನ್ ಮೌಲ್ಯ)</span>
-                            <span class="tooltip">
-                                <span class="info-icon">i</span>
-                                <span class="tooltip-text">Commutation factor based on age</span>
-                            </span>
-                        </label>
-                        <input type="number" id="commutationFactor" value="9.81" min="0" max="15" step="0.01" required>
-                    </div>
+                        <!-- Accumulated Leave -->
+                        <div class="form-group">
+                            <label for="accumulatedLeave">
+                                Accumulated Leave
+                                <span class="tooltip">
+                                    <span class="info-icon">i</span>
+                                    <span class="tooltip-text">Maximum 300 days considered for encashment</span>
+                                </span>
+                            </label>
+                            <span class="kannada">ಸಂಗ್ರಹಿತ ರಜೆ (ದಿನಗಳು)</span>
+                            <input type="number" id="accumulatedLeave" value="300" required min="0" max="1000">
+                        </div>
 
-                    <button type="submit">Calculate Benefits</button>
+                        <!-- Commutation Factor — spans full width -->
+                        <div class="form-group form-group-full">
+                            <label for="commutationFactor">
+                                Commutation Factor
+                                <span class="tooltip">
+                                    <span class="info-icon">i</span>
+                                    <span class="tooltip-text">Commutation factor based on age at next birthday after retirement</span>
+                                </span>
+                            </label>
+                            <span class="kannada">ಕಮ್ಯುಟೇಶನ್ ಮೌಲ್ಯ</span>
+                            <input type="number" id="commutationFactor" value="9.81" min="0" max="15" step="0.01" required>
+                        </div>
+
+                    </div><!-- /.form-grid -->
+
+                    <button type="submit" class="btn-calculate">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <rect x="4" y="2" width="16" height="20" rx="2"/>
+                            <path d="M8 6h8M8 10h8M8 14h4"/>
+                        </svg>
+                        Calculate Benefits
+                    </button>
                 </form>
             </div>
         </div>
 
         <div class="result-container" id="resultContainer">
             <div class="result-header">
-                <h2>Retirement Benefits</h2>
+                <h2>Retirement Benefits Summary</h2>
             </div>
 
             <div class="result-body">
-                <div class="service-details" id="serviceDetails">
-                    </div>
+                <div class="service-details" id="serviceDetails"></div>
 
                 <div class="result-item">
-                    <span class="result-label">1. Retirement Pension (ನಿವೃತ್ತಿ ವೇತನ)</span>
-                    <div class="result-value" id="retirementPension">-</div>
+                    <span class="result-label">1. Retirement Pension &nbsp;<span style="font-weight:400;color:#64748b;font-size:0.8rem;">(ನಿವೃತ್ತಿ ವೇತನ)</span></span>
+                    <div class="result-value" id="retirementPension">—</div>
                     <button class="toggle-btn" onclick="toggleFormula('pensionFormula')">Show Formula</button>
                     <div class="result-formula" id="pensionFormula"></div>
                 </div>
 
                 <div class="result-item">
-                    <span class="result-label">2. DCRG / Retirement Gratuity (ನಿವೃತ್ತಿ ಉಪದಾನ)</span>
-                    <div class="result-value" id="dcrg">-</div>
+                    <span class="result-label">2. DCRG / Retirement Gratuity &nbsp;<span style="font-weight:400;color:#64748b;font-size:0.8rem;">(ನಿವೃತ್ತಿ ಉಪದಾನ)</span></span>
+                    <div class="result-value" id="dcrg">—</div>
                     <button class="toggle-btn" onclick="toggleFormula('dcrgFormula')">Show Formula</button>
-                    <div class="result-formula" id="dcrgFormula"></div> </div>
+                    <div class="result-formula" id="dcrgFormula"></div>
+                </div>
 
                 <div class="result-item">
-                    <span class="result-label">3. Commutation Amount (ಕಮ್ಯುಟೇಶನ್ ಹಣ / ಪರಿವರ್ತಿತ ಪಿಂಚಣಿ ಮೊತ್ತ)</span>
-                    <div class="result-value" id="commutationAmount">-</div>
+                    <span class="result-label">3. Commutation Amount &nbsp;<span style="font-weight:400;color:#64748b;font-size:0.8rem;">(ಕಮ್ಯುಟೇಶನ್ ಹಣ)</span></span>
+                    <div class="result-value" id="commutationAmount">—</div>
                     <button class="toggle-btn" onclick="toggleFormula('commutationFormula')">Show Formula</button>
                     <div class="result-formula" id="commutationFormula">
                         <div class="formula-title">Formula:</div>
                         <div class="formula-steps" id="commutationFormulaSteps"></div>
-
                         <div class="info-note">
                             <strong>Note:</strong>
-                            <ul style="margin-top: 5px; margin-left: 20px;">
-                                <li>Commutation amount is sanctioned as Loan & Shall be deducted from Pension.</li>
+                            <ul style="margin-top:5px;margin-left:18px;">
+                                <li>Commutation amount is sanctioned as Loan &amp; shall be deducted from Pension.</li>
                                 <li>Sanctioned commutation must be repaid in 15 Years.</li>
                                 <li>If the retired employee dies in the middle, the amount will be waived.</li>
                             </ul>
@@ -406,22 +803,22 @@
                 </div>
 
                 <div class="result-item">
-                    <span class="result-label">4. Family Pension (ಕುಟುಂಬ ಪಿಂಚಣಿ)</span>
-                    <div class="result-value" id="familyPension">-</div>
+                    <span class="result-label">4. Family Pension &nbsp;<span style="font-weight:400;color:#64748b;font-size:0.8rem;">(ಕುಟುಂಬ ಪಿಂಚಣಿ)</span></span>
+                    <div class="result-value" id="familyPension">—</div>
                     <button class="toggle-btn" onclick="toggleFormula('familyPensionFormula')">Show Formula</button>
                     <div class="result-formula" id="familyPensionFormula"></div>
                 </div>
 
                 <div class="result-item">
-                    <span class="result-label">5. Terminal Leave Encashment (ಗಳಿಕೆ ರಜೆ ನಗದೀಕರಣ)</span>
-                    <div class="result-value" id="leaveEncashment">-</div>
+                    <span class="result-label">5. Terminal Leave Encashment &nbsp;<span style="font-weight:400;color:#64748b;font-size:0.8rem;">(ಗಳಿಕೆ ರಜೆ ನಗದೀಕರಣ)</span></span>
+                    <div class="result-value" id="leaveEncashment">—</div>
                     <button class="toggle-btn" onclick="toggleFormula('leaveEncashmentFormula')">Show Formula</button>
                     <div class="result-formula" id="leaveEncashmentFormula"></div>
                 </div>
             </div>
         </div>
 
-        <div class="watermark">by Teju</div>
+        <div class="watermark">by <strong>Teju</strong></div>
     </div>
 
     <script>
