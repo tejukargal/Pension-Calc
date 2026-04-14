@@ -460,22 +460,45 @@
             background: var(--primary-light);
             border: 1px solid #bfdbfe;
             border-radius: var(--radius);
-            padding: 1rem 1.1rem;
+            padding: 1rem;
             margin-bottom: 1.25rem;
-            font-size: 0.85rem;
         }
 
-        .service-details p {
-            margin-bottom: 4px;
-            color: var(--text-secondary);
-            display: flex;
-            gap: 6px;
+        .detail-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 8px;
         }
 
-        .service-details p strong {
+        .detail-item {
+            background: #fff;
+            border: 1px solid #bfdbfe;
+            border-radius: 8px;
+            padding: 8px 10px;
+            min-width: 0;
+            overflow: hidden;
+        }
+
+        .detail-item-full {
+            grid-column: 1 / -1;
+        }
+
+        .detail-label {
+            font-size: 0.63rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.07em;
+            color: var(--primary);
+            margin-bottom: 3px;
+        }
+
+        .detail-value {
+            font-family: 'DM Mono', monospace;
+            font-size: 0.88rem;
+            font-weight: 500;
             color: var(--text-primary);
-            font-weight: 600;
-            white-space: nowrap;
+            word-break: break-word;
+            line-height: 1.4;
         }
 
         .result-item {
@@ -951,16 +974,48 @@
 
                 // Update service details
                 document.getElementById('serviceDetails').innerHTML = `
-                    <p><strong>Date of Birth:</strong> ${formattedDOB}</p>
-                    <p><strong>Retirement Date:</strong> ${formattedEndDate}</p>
-                    <p><strong>Retirement Basic Salary:</strong> ₹${monthlySalary.toLocaleString('en-IN')}</p>
-                    <p><strong>DA (${daPercentage}%):</strong> ₹${daAmount.toLocaleString('en-IN', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</p>
-                    <p><strong>Total Salary (Basic + DA):</strong> ₹${(monthlySalary + daAmount).toLocaleString('en-IN', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</p>
-                    <p><strong>Service Period:</strong> ${formattedStartDate} to ${formattedEndDate}</p>
-                    <p><strong>Service Duration:</strong> ${serviceData.years} years, ${serviceData.months} months, ${serviceData.days} days</p>
-                    <p><strong>Qualifying Half-Years:</strong> ${serviceData.halfYears} (Actual: ${serviceData.actualHalfYears}, Max: 60)</p>
-                    <p><strong>Accumulated Leave:</strong> ${actualLeave} days (Considered: ${accumulatedLeave} days)</p>
-                    <p><strong>Commutation Factor:</strong> ${commutationFactor}</p>
+                    <div class="detail-grid">
+                        <div class="detail-item">
+                            <div class="detail-label">Date of Birth</div>
+                            <div class="detail-value">${formattedDOB}</div>
+                        </div>
+                        <div class="detail-item">
+                            <div class="detail-label">Retirement Date</div>
+                            <div class="detail-value">${formattedEndDate}</div>
+                        </div>
+                        <div class="detail-item">
+                            <div class="detail-label">Retirement Basic</div>
+                            <div class="detail-value">₹${monthlySalary.toLocaleString('en-IN')}</div>
+                        </div>
+                        <div class="detail-item">
+                            <div class="detail-label">DA (${daPercentage}%)</div>
+                            <div class="detail-value">₹${daAmount.toLocaleString('en-IN', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</div>
+                        </div>
+                        <div class="detail-item detail-item-full">
+                            <div class="detail-label">Total Salary (Basic + DA)</div>
+                            <div class="detail-value">₹${(monthlySalary + daAmount).toLocaleString('en-IN', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</div>
+                        </div>
+                        <div class="detail-item detail-item-full">
+                            <div class="detail-label">Service Period</div>
+                            <div class="detail-value">${formattedStartDate} → ${formattedEndDate}</div>
+                        </div>
+                        <div class="detail-item detail-item-full">
+                            <div class="detail-label">Service Duration</div>
+                            <div class="detail-value">${serviceData.years} yrs, ${serviceData.months} months, ${serviceData.days} days</div>
+                        </div>
+                        <div class="detail-item">
+                            <div class="detail-label">Qualifying Half-Years</div>
+                            <div class="detail-value">${serviceData.halfYears} <span style="font-size:0.75rem;color:#64748b;">(Actual: ${serviceData.actualHalfYears}, Max: 60)</span></div>
+                        </div>
+                        <div class="detail-item">
+                            <div class="detail-label">Accumulated Leave</div>
+                            <div class="detail-value">${actualLeave} days <span style="font-size:0.75rem;color:#64748b;">(Cap: ${accumulatedLeave})</span></div>
+                        </div>
+                        <div class="detail-item detail-item-full">
+                            <div class="detail-label">Commutation Factor</div>
+                            <div class="detail-value">${commutationFactor}</div>
+                        </div>
+                    </div>
                 `;
 
                 // Update result values and formulas
